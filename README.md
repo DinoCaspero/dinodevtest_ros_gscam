@@ -1,4 +1,8 @@
 # Dino Dev Test - ROS gscam
+This package is my development test attempt with [gscam](https://github.com/ros-drivers/gscam).  
+Feel free to use it as a reference for your own project. :smiley:  
+  
+```Jetson``` ```Nano``` ```B01``` ```Ubuntu``` ```ROS``` ```melodic``` ```gscam``` ```stereo```
 
 ## Hardware
 
