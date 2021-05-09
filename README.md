@@ -82,6 +82,16 @@ Result:
 /stereo/right/image_raw
 ...
 ```
+
+5. View camera streams  
+Left camera:  
+```
+rosrun image_view image_view image:=/stereo/left/image_raw
+```
+Right camera:  
+```
+rosrun image_view image_view image:=/stereo/right/image_raw
+```  
 To view in RVIZ, set Fixed Frame to ```stereo_optical_frame```
 
 ## MIT License
