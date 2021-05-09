@@ -1,0 +1,31 @@
+<launch>
+    <arg name="sensor_mode" default="3" />
+    <arg name="frame_rate"   default="30" />
+    <arg name="flip_method" default="0" />
+    <arg name="width"       default="1280" />
+    <arg name="height"      default="720" />
+
+    <arg name="left_cam_id" default="0" />
+    <arg name="right_cam_id" default="1" />
+
+    <node name="left_camera_node" pkg="gscam" type="gscam" output="screen">
+        <param name="camera_name" value="default"/>
+        <param name="camera_info_url" value="package://gscam/examples/uncalibrated_parameters.ini"/>
+        <param name="gscam_config" value="nvarguscamerasrc sensor-id=0 sensor-mode=$(arg sensor_mode) ! video/x-raw(memory:NVMM), format=(string)NV12, framerate=(fraction)$(arg frame_rate)/1 ! nvvidconv flip-method=$(arg flip_method) ! video/x-raw, width=(int)$(arg width), height=(int)$(arg height), format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR"/>
+        <param name="frame_id" value="stereo_optical_frame"/>
+        <param name="sync_sink" value="true"/>
+        <remap from="/camera/image_raw" to="stereo/left/image_raw" />
+        <remap from="/set_camera_info" to="stereo/left/set_camera_info" />
+    </node>
+
+    <node name="right_camera_node" pkg="gscam" type="gscam" output="screen">
+        <param name="camera_name" value="default"/>
+        <param name="camera_info_url" value="package://gscam/examples/uncalibrated_parameters.ini"/>
+        <param name="gscam_config" value="nvarguscamerasrc sensor-id=1 sensor-mode=$(arg sensor_mode) ! video/x-raw(memory:NVMM), format=(string)NV12, framerate=(fraction)$(arg frame_rate)/1 ! nvvidconv flip-method=$(arg flip_method) ! video/x-raw, width=(int)$(arg width), height=(int)$(arg height), format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR"/>
+        <param name="frame_id" value="stereo_optical_frame"/>
+        <param name="sync_sink" value="true"/>
+        <remap from="/camera/image_raw" to="stereo/right/image_raw" />
+        <remap from="/set_camera_info" to="stereo/right/set_camera_info" />
+    </node>
+
+</launch>
