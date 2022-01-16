@@ -12,13 +12,14 @@ Feel free to use it as a reference for your own project. :smiley:
 ## Software 
 
 + Ubuntu 18.04 LTS ([image](https://developer.nvidia.com/jetson-nano-sd-card-image))
-+ ROS Melodic
++ ROS Melodic (ros-melodic-desktop-full)
 + catkin
 + gscam
 
 ## Install ROS Melodic
 
-Follow the guide at http://wiki.ros.org/melodic/Installation/Ubuntu  
+Follow the guide at http://wiki.ros.org/melodic/Installation/Ubuntu.  
+For simplicity, I've installed ros-melodic-desktop-full.
 
 ## Setup catkin workspace
 
